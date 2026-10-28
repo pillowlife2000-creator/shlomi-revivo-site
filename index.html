@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>שלומי רביבו · פרגולות ומסכי ZIP בצפון</title>
+<meta name="description" content="פרגולות אלומיניום גבוהות, פרגולות חשמליות ומסכי ZIP לבתים ולמרפסות בצפון. מודדים אצלכם, מהנדס ודיווח לוועדה כלולים, זמנים ואחריות בכתב.">
+<link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="media/fonts/KavGeo-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="media/fonts/KavGeo-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="media/fonts/KavGeo-Black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="media/hero-view.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;600;700&display=swap">
+<style>
+/* ---------- Kav Geo: the Hebrew face from the Click Productions site, self-hosted ----------
+   No Latin and no quotes, brackets or middot in it: those fall through to Plex per glyph.
+   size-adjust 110%: its letters sit at 0.67 em where Plex sits at 0.74. */
+@font-face{font-family:"Kav Geo";src:url("media/fonts/KavGeo-Light.woff2") format("woff2");font-weight:300;font-display:swap;size-adjust:110%}
+@font-face{font-family:"Kav Geo";src:url("media/fonts/KavGeo-Regular.woff2") format("woff2");font-weight:400;font-display:swap;size-adjust:110%}
+@font-face{font-family:"Kav Geo";src:url("media/fonts/KavGeo-Medium.woff2") format("woff2");font-weight:500;font-display:swap;size-adjust:110%}
+@font-face{font-family:"Kav Geo";src:url("media/fonts/KavGeo-Bold.woff2") format("woff2");font-weight:700;font-display:swap;size-adjust:110%}
+@font-face{font-family:"Kav Geo";src:url("media/fonts/KavGeo-Black.woff2") format("woff2");font-weight:900;font-display:swap;size-adjust:110%}
+
+:root{
+  /* Colour. A paper that is not #fff, warm ink, and the two colours of the logo:
+     the deep green of the frame and the brass of the slats. */
+  --paper:#FAF8F4; --paper-2:#F1EEE7; --ink:#1A2421; --ink-2:#3B4743; --muted:#56625E; --rule:#DCD8CF;
+  --brand:#1F3A34; --brand-hover:#15302A; --brass:#B9832F; --brass-text:#7A5418;
+  /* Type. Kav Geo for every Hebrew word, Plex catches what it lacks. No letter-spacing, no italic. */
+  --font:"Kav Geo","IBM Plex Sans Hebrew","Arial Hebrew",Arial,sans-serif;
+  --text-hero:clamp(2.6rem,1rem + 4.2vw,5.6rem);
+  --text-section:clamp(2rem,1rem + 2.6vw,4rem);
+  --text-statement:clamp(1.4rem,1rem + 1vw,2.2rem);
+  --text-lede:clamp(1.15rem,1rem + .5vw,1.5rem);
+  --text-body:clamp(1.05rem,.98rem + .25vw,1.25rem);
+  --text-meta:clamp(.95rem,.9rem + .15vw,1.05rem);
+  --gutter:clamp(1.25rem,3.2vw,4rem); --max:1240px; --measure:56ch;
+  --bar-h:72px; --col:clamp(18px,3.4vw,46px);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--bar-h)}
+body{font-family:var(--font);font-weight:400;color:var(--ink);background:var(--paper);font-size:var(--text-body);line-height:1.6;-webkit-text-size-adjust:100%}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-weight:900;line-height:1.08;text-wrap:balance}
+p{text-wrap:pretty}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+section{padding:clamp(4.5rem,3rem + 5vw,8rem) 0}
+section.alt{background:var(--paper-2)}
+h2{font-size:var(--text-section);margin-bottom:.4em}
+h3{font-size:clamp(1.25rem,1.1rem + .5vw,1.6rem);font-weight:700;margin-bottom:.3em}
+.lede{font-size:var(--text-lede);color:var(--ink-2);max-width:var(--measure);font-weight:300}
+.label{font-size:var(--text-meta);font-weight:700;color:var(--brass-text);margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
+.label:before{content:"";width:1.6rem;height:2px;background:var(--brass)}
+.ph{background:#FFF0CC;padding:0 .25em;font-weight:700;color:#5c3f0c}
+.ltr{direction:ltr;unicode-bidi:isolate;font-family:"IBM Plex Sans Hebrew",Arial,sans-serif}
+/* buttons: square, like the rest of the page; hover inverts */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:.8rem 1.6rem;font:inherit;font-size:var(--text-meta);font-weight:700;text-decoration:none;border:2px solid var(--brand);cursor:pointer;transition:background .26s,color .26s,border-color .26s}
+.btn-primary{background:var(--brand);color:var(--paper)}
+.btn-primary:hover{background:var(--paper);color:var(--brand)}
+.btn-ghost{background:transparent;color:var(--brand)}
+.btn-ghost:hover{background:var(--brand);color:var(--paper)}
+/* bar */
+header{position:sticky;top:0;z-index:50;background:var(--paper);height:var(--bar-h);transition:box-shadow .2s}
+header.scrolled{box-shadow:0 1px 0 var(--rule)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:100%;gap:1.5rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.logo svg{width:38px;height:38px;flex:none}
+.logo-name{display:block;font-weight:900;font-size:1.3rem;line-height:1}
+.logo small{display:block;font-size:.8rem;font-weight:400;color:var(--muted);margin-top:.3rem}
+.nav ul{display:flex;gap:1.8rem;list-style:none}
+.nav ul a{text-decoration:none;font-weight:500;font-size:var(--text-meta)}
+.nav ul a:hover{color:var(--brass-text)}
+.nav .btn{min-height:44px;padding:.5rem 1.2rem}
+
+/* ===== Opening: a ZIP screen rolls up with the scroll and opens the view ===== */
+.intro{position:relative;height:420vh;background:#0f1d1a;padding:0!important}
+.intro-stage{position:sticky;top:var(--bar-h);height:calc(100vh - var(--bar-h));overflow:hidden}
+.intro-view{position:absolute;inset:0;background:#c9c1ad center/cover no-repeat;transform-origin:50% 60%;will-change:transform}
+.intro-shade{position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 50% 48%,rgba(8,16,14,.45),rgba(8,16,14,0) 75%),linear-gradient(180deg,rgba(10,20,18,.15),rgba(10,20,18,0) 35%,rgba(10,20,18,.45));pointer-events:none}
+.f-beam{position:absolute;top:0;left:0;right:0;height:clamp(26px,5.2vh,46px);background:linear-gradient(180deg,#646d73,#4a5257 55%,#363c40);box-shadow:0 3px 10px rgba(0,0,0,.35);z-index:4}
+.f-beam:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:rgba(255,255,255,.18)}
+.f-box{position:absolute;top:clamp(26px,5.2vh,46px);left:var(--col);right:var(--col);height:clamp(20px,3.6vh,32px);background:linear-gradient(180deg,#575f64,#41484c);border-bottom:1px solid #22272a;z-index:4}
+.f-col{position:absolute;top:0;bottom:0;width:var(--col);background:linear-gradient(90deg,#363c40,#5d666b 45%,#3f464a);z-index:4}
+.f-col.r{right:0}.f-col.l{left:0}
+.f-col:after{content:"";position:absolute;top:0;bottom:0;width:3px;background:#0d1011}
+.f-col.r:after{left:0}.f-col.l:after{right:0}
+.screen{position:absolute;left:var(--col);right:var(--col);top:calc(clamp(26px,5.2vh,46px) + clamp(20px,3.6vh,32px));height:calc(100% - clamp(26px,5.2vh,46px) - clamp(20px,3.6vh,32px));transform-origin:top;z-index:3;will-change:transform}
+.screen-fab{position:absolute;inset:0;background-color:rgba(38,43,42,.86);background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px)}
+.screen-fab:before,.screen-fab:after{content:"";position:absolute;top:0;bottom:0;width:6px;background:repeating-linear-gradient(180deg,#111 0 3px,#2b2b2b 3px 6px)}
+.screen-fab:before{right:0}.screen-fab:after{left:0}
+.screen-bar{transform-origin:bottom;position:absolute;left:-2px;right:-2px;bottom:-1px;height:clamp(10px,1.8vh,16px);background:linear-gradient(180deg,#454c4f,#2a2f31);box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.intro-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 calc(var(--col) + 20px);z-index:5;pointer-events:none}
+.intro-txt>div{position:absolute;max-width:900px;opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.intro-txt>div.on{opacity:1;transform:none;pointer-events:auto}
+.intro-txt .k{font-size:var(--text-meta);font-weight:500;color:#E9D9BC;margin-bottom:.8rem}
+.intro-txt h1,.intro-txt .h{font-size:var(--text-hero);font-weight:900;line-height:1.05;color:#fff;text-wrap:balance}
+.intro-txt p{font-size:var(--text-lede);margin-top:1rem;color:#EEF2F0;font-weight:300}
+.intro-txt .ctas{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+.intro-txt .btn-primary{background:var(--paper);color:var(--brand);border-color:var(--paper)}
+.intro-txt .btn-primary:hover{background:var(--brand);color:var(--paper)}
+.intro-txt .btn-ghost{color:#fff;border-color:#fff}
+.intro-txt .btn-ghost:hover{background:#fff;color:var(--brand)}
+.scroll-hint{display:inline-flex;flex-direction:column;align-items:center;gap:.4rem;margin-top:1.8rem;font-size:var(--text-meta);color:#E9D9BC}
+.scroll-hint i{width:2px;height:34px;background:linear-gradient(#E9D9BC,transparent);animation:hint 1.6s infinite}
+@keyframes hint{0%{transform:translateY(-6px);opacity:0}40%{opacity:1}100%{transform:translateY(10px);opacity:0}}
+.intro-prog{position:absolute;bottom:0;right:0;height:3px;background:var(--brass);z-index:6;width:0}
+.ai-tag{position:absolute;bottom:12px;left:calc(var(--col) + 10px);z-index:6;font-size:.75rem;color:#fff;background:rgba(0,0,0,.4);padding:2px 8px}
+.intro.static{height:auto}
+.intro.static .intro-stage{position:relative;top:0;min-height:560px}
+
+/* statement under the opening */
+.statement{font-size:var(--text-statement);font-weight:700;line-height:1.3;max-width:28ch;text-wrap:balance}
+.statement span{color:var(--muted);font-weight:300}
+.proof-row{display:flex;flex-wrap:wrap;gap:.8rem 2.2rem;margin-top:2rem;font-size:var(--text-meta);color:var(--ink-2)}
+.proof-row>span{display:flex;align-items:center;gap:.6rem}
+.proof-row>span:before{content:"";width:9px;height:9px;background:var(--brass)}
+.aud{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:3rem}
+.aud div{padding:1.4rem 1.2rem;border-left:1px solid var(--rule);font-weight:700;line-height:1.35}
+.aud div:last-child{border-left:0}
+.aud small{display:block;font-weight:300;color:var(--muted);font-size:var(--text-meta);margin-top:.35rem}
+/* grids and cards */
+.grid{display:grid;gap:clamp(1rem,2vw,1.6rem)}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--paper);border:1px solid var(--rule);padding:clamp(1.3rem,2vw,2rem);position:relative}
+section.alt .card{background:#fff}
+.card p,.card li{color:var(--ink-2);font-size:var(--text-body);font-weight:300}
+.card:after{content:"";position:absolute;top:-1px;right:-1px;width:22px;height:22px;border-top:3px solid var(--brass);border-right:3px solid var(--brass)}
+.ico{width:42px;height:42px;margin-bottom:1rem;color:var(--brass)}
+.fact{border-top:3px solid var(--brand);padding-top:1.1rem}
+.fact b{display:block;font-size:clamp(1.15rem,1rem + .4vw,1.4rem);font-weight:900;margin-bottom:.35rem}
+.fact p{color:var(--ink-2);font-weight:300}
+.persona ul{padding-inline-start:1.2rem;margin-top:.7rem}
+/* works */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.gal figure{margin:0;position:relative}
+.gal figure:first-child{grid-column:span 2;grid-row:span 2}
+.gal img{aspect-ratio:4/3;object-fit:cover;width:100%;cursor:zoom-in;background:var(--paper-2)}
+figcaption{font-size:var(--text-meta);color:var(--muted);margin-top:.4rem;line-height:1.4}
+.ai-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:#fff;font-size:.75rem;font-weight:700;padding:2px 8px}
+.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.vids video{aspect-ratio:16/9;object-fit:cover;width:100%;background:#000}
+.lb{position:fixed;inset:0;background:rgba(10,20,18,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.lb.open{display:flex}
+.lb img{max-height:88vh}
+.lb button{position:absolute;top:16px;left:16px;background:var(--paper);border:0;width:48px;height:48px;font-size:24px;cursor:pointer}
+.ba{position:relative;aspect-ratio:4/3;overflow:hidden;user-select:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 50%)}
+.ba input{position:absolute;inset:auto 0 12px 0;width:80%;margin:0 auto;direction:ltr}
+.ba .lbl{position:absolute;top:10px;background:rgba(255,255,255,.92);font-size:.8rem;font-weight:700;padding:2px 8px}
+.ba .lbl.l{left:10px}.ba .lbl.r{right:10px}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,3vw,2.5rem);margin-top:2.5rem}
+.step{border-top:1px solid var(--rule);padding-top:1.2rem}
+.step em{display:block;font-style:normal;font-size:var(--text-meta);font-weight:700;color:var(--brass-text);margin-bottom:.4rem}
+.step p{color:var(--ink-2);font-weight:300}
+/* about */
+.about{display:grid;grid-template-columns:5fr 7fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.about .photo{aspect-ratio:4/5;background:var(--paper-2);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:var(--text-meta);text-align:center;padding:1.5rem}
+.about .photo img{width:100%;height:100%;object-fit:cover}
+.about p{margin-bottom:1rem;color:var(--ink-2);font-weight:300}
+/* faq */
+details{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;font-weight:700;font-size:clamp(1.1rem,1rem + .35vw,1.35rem);padding:1.2rem 0;list-style:none;display:flex;justify-content:space-between;gap:1rem;min-height:48px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:1.6rem;line-height:1;color:var(--brass-text);font-weight:300}
+details[open] summary:after{content:"–"}
+details p{padding:0 0 1.3rem;color:var(--ink-2);max-width:70ch;font-weight:300}
+/* contact */
+.contact{background:var(--brand);color:var(--paper)}
+.contact .label{color:#E9D9BC}.contact .label:before{background:#E9D9BC}
+.contact h2{color:var(--paper)}
+.contact .lede{color:#D3DED9}
+.formwrap{display:grid;grid-template-columns:5fr 6fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+form{background:var(--paper);color:var(--ink);padding:clamp(1.4rem,3vw,2.4rem)}
+label{display:block;font-weight:700;font-size:var(--text-meta);margin-bottom:.4rem}
+.field{margin-bottom:1.2rem}
+input[type=text],input[type=tel],select{width:100%;min-height:52px;padding:.7rem .9rem;border:1px solid #A9B3AF;border-radius:0;font:inherit;font-size:1.05rem;background:#fff;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--brass);outline-offset:1px}
+.err{color:#A3412E;font-size:.9rem;margin-top:.3rem;display:none}
+.field.bad .err{display:block}
+.field.bad input,.field.bad select{border-color:#A3412E}
+.consent{font-size:.85rem;color:var(--muted);margin-top:.9rem}
+.ok{display:none;background:#E5F1EA;padding:1rem;font-weight:700;margin-top:1rem}
+.ways{display:flex;flex-direction:column;gap:.7rem;margin-top:2rem}
+.way{display:flex;justify-content:space-between;align-items:center;min-height:56px;padding:0 1.1rem;border:1px solid rgba(255,255,255,.28);text-decoration:none;font-weight:700;transition:background .26s,color .26s}
+.way:hover{background:var(--paper);color:var(--brand)}
+.way span{font-weight:300}
+.reply{margin-top:1.4rem;font-size:var(--text-meta);color:#D3DED9}
+footer{background:#14211E;color:#B9C6C1;padding:2.5rem 0 7rem;font-size:var(--text-meta)}
+footer a{color:#fff}
+footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem}
+.sticky{display:none}
+@media (max-width:900px){
+  .nav ul{display:none}
+  .aud{grid-template-columns:repeat(2,1fr)}
+  .aud div:nth-child(2){border-left:0}
+  .aud div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .g3,.g4,.steps,.vids,.g2{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr 1fr}
+  .gal figure:first-child{grid-column:span 2;grid-row:auto}
+  .about,.formwrap{grid-template-columns:1fr}
+  .about .photo{aspect-ratio:4/3}
+  .sticky{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;gap:8px;padding:10px 12px;background:var(--paper);box-shadow:0 -1px 0 var(--rule)}
+  .sticky .btn{flex:1;min-height:50px;padding:.5rem}
+}
+@media (max-width:600px){.nav>.btn{display:none}.intro{height:340vh}.gal{grid-template-columns:1fr}.gal figure:first-child{grid-column:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll-hint i{animation:none}}
+</style>
+<script src="media.js"></script>
+<script src="tracking.js"></script>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="שלומי רביבו, פרגולות ומסכי ZIP">
+      <svg viewBox="0 0 96 96" aria-hidden="true"><g fill="#1F3A34"><rect x="8" y="10" width="80" height="9" rx="1.5"/><rect x="12" y="19" width="9" height="69" rx="1"/><rect x="75" y="19" width="9" height="69" rx="1"/></g><g fill="#B9832F"><rect x="24" y="23" width="48" height="5" rx="1"/><rect x="24" y="31" width="48" height="5" rx="1"/><rect x="24" y="39" width="48" height="5" rx="1"/><rect x="24" y="47" width="48" height="5" rx="1"/></g><rect x="24" y="55" width="48" height="2.5" fill="#1F3A34" rx="1"/></svg>
+      <span><span class="logo-name">שלומי רביבו</span><small>פרגולות · מסכי <span class="ltr">ZIP</span> · הצללה</small></span>
+    </a>
+    <ul>
+      <li><a href="#works">איך זה נראה</a></li>
+      <li><a href="#services">מה עושים</a></li>
+      <li><a href="#faq">שאלות</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#contact">לתיאום מדידה</a>
+  </div>
+</header>
+
+<main>
+<section class="intro" id="intro" aria-label="פתיחה">
+  <div class="intro-stage">
+    <div class="intro-view" id="introView" role="img" aria-label="נוף לעמק יזרעאל ולתבור מתוך פטיו"></div>
+    <div class="intro-shade"></div>
+    <div class="screen" id="zipScreen" aria-hidden="true"><div class="screen-fab"></div><div class="screen-bar"></div></div>
+    <div class="f-beam"></div><div class="f-box"></div><div class="f-col r"></div><div class="f-col l"></div>
+    <div class="intro-txt">
+      <div class="on" data-at="0">
+        <div class="k">שלומי רביבו · פרגולות ומסכי <span class="ltr">ZIP</span> · הצפון</div>
+        <div class="h">רוח מהים.<br>גשם בינואר.<br>שמש ביולי.</div>
+        <span class="scroll-hint">תגללו למטה<i></i></span>
+      </div>
+      <div data-at="0.45">
+        <div class="h">המסך נעול במסילות.<br>הוא לא עף ברוח.</div>
+        <p>עולה ויורד בלחיצה, ונשאר מתוח גם בקומה גבוהה.</p>
+      </div>
+      <div data-at="0.9">
+        <h1>חוץ שמשתמשים בו<br>כל השנה.</h1>
+        <p>פרגולות אלומיניום גבוהות, פרגולות חשמליות ומסכי <span class="ltr">ZIP</span>. מחיפה והקריות ועד העמקים והגליל.</p>
+        <div class="ctas"><a class="btn btn-primary js-wa" href="#contact">תשלחו תמונה, נחזיר טווח מחיר</a><a class="btn btn-ghost" href="#works">איך זה נראה</a></div>
+      </div>
+    </div>
+    <div class="ai-tag">הדמיה</div>
+    <div class="intro-prog" id="introProg"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">מה אנחנו עושים</div>
+    <p class="statement">מודדים אצלכם, מטפלים במהנדס ובדיווח לוועדה, ומתקינים בתאריך שכתוב בהצעה. <span>פרגולה, מסך, או שניהם יחד, מספק אחד.</span></p>
+    <div class="proof-row">
+      <span>מהנדס ודיווח לוועדה כלולים</span>
+      <span>אחריות לכל רכיב, בכתב</span>
+      <span>שירות ותיקונים מהצפון</span>
+    </div>
+    <div class="aud">
+      <div>בית ביישוב או במושב<small>פרגולה גבוהה לחצר, וסגירה לחורף</small></div>
+      <div>דירה עם מרפסת<small>מסכי <span class="ltr">ZIP</span> נגד רוח וגשם</small></div>
+      <div>פרגולה ישנה<small>החלפה, גג שקט, סגירה</small></div>
+      <div>בונים בית<small>מתכננים חשמל ועיגון מראש</small></div>
+    </div>
+    <div class="hero-video" id="heroVideoWrap" hidden></div>
+  </div>
+</section>
+
+<section id="works" class="alt" data-section="works">
+  <div class="wrap">
+    <div class="label">איך זה נראה</div>
+    <h2>משהו שדומה לבית שלכם.</h2>
+    <p class="lede" id="worksLead">כל פרויקט עם סוג הנכס, המוצר והאזור.</p>
+    <div class="vids" id="vids"></div>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">מה מקבלים בכתב</div>
+    <h2>לפני שמתחילים, הכל כתוב.</h2>
+    <div class="grid g4" style="margin-top:2.2rem">
+      <div class="fact"><b>תאריכים</b><p>מדידה, ייצור והתקנה. אם משהו מתעכב, מודיעים לכם לפני, לא אחרי.</p></div>
+      <div class="fact"><b>אחריות לכל רכיב</b><p>שלד <span class="ph">[__]</span> שנים, צבע <span class="ph">[__]</span>, מנוע <span class="ph">[__]</span>, בד <span class="ph">[__]</span>.</p></div>
+      <div class="fact"><b>שירות אחרי ההתקנה</b><p>תקלה? מגיעים תוך <span class="ph">[__]</span> ימי עבודה. מתקנים גם מערכות שהתקינו אחרים.</p></div>
+      <div class="fact"><b>מהנדס ודיווח</b><p>אישור יציבות והגשת הדיווח לוועדה תוך 45 יום, כמו שהתקנות מחייבות.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ba" class="alt" data-section="ba">
+  <div class="wrap">
+    <div class="label">לפני ואחרי</div>
+    <h2>אותו מקום, שימוש אחר.</h2>
+    <div class="grid g2" id="baList" style="margin-top:2rem"></div>
+  </div>
+</section>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <div class="label">מה עושים</div>
+    <h2>שלושה מוצרים. מערכת אחת.</h2>
+    <p class="lede">אפשר להזמין כל אחד לחוד. הכי טוב כשהם מתוכננים יחד: שלד, גג, חשמל וסגירה, ספק אחד ואחריות אחת.</p>
+    <div class="grid g4" style="margin-top:2.4rem">
+      <div class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h32M8 12v24M32 12v24M4 6h32"/><path d="M12 12v4M18 12v4M24 12v4M30 12v4" stroke-width="1.6"/></svg>
+        <h3>פרגולה גבוהה</h3><p>אלומיניום לחצר, לפטיו ולגג. גובה ומפתח לפי השטח, גג שקוף, שקט או מבודד. בלי לצבוע כל שנה כמו עץ.</p></div>
+      <div class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 10h32M8 10v26M32 10v26"/><path d="M11 16l6-3M18 16l6-3M25 16l6-3" stroke-width="2"/></svg>
+        <h3>פרגולה חשמלית</h3><p>רפפות שמסתובבות בלחיצה: צל בקיץ, אור בחורף, ניקוז מובנה בגשם. אפשר גם הפעלה ידנית בשבת.</p></div>
+      <div class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="6" y="5" width="28" height="6" rx="1"/><path d="M8 11v24M32 11v24"/><path d="M10 11h20v16H10z" stroke-width="1.6"/></svg>
+        <h3>מסכי <span class="ltr">ZIP</span></h3><p>מסך בד חשמלי שנעול במסילות הצד, אז הוא לא עף ברוח. סוגר מרפסת או פרגולה לחורף, ונעלם כשלא צריך.</p></div>
+      <div class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 4v6M20 30v6M4 20h6M30 20h6"/><circle cx="20" cy="20" r="7"/></svg>
+        <h3>חוץ מלא</h3><p>פרגולה, תאורת לד, מאוורר, נקודות חשמל ומסכים לחורף. תכנון אחד, מחיר אחד.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="label">למי זה מתאים</div>
+    <h2>מה כל אחד מקבל.</h2>
+    <div class="grid g3" style="margin-top:2.2rem">
+      <div class="card persona"><h3>בית ביישוב או במושב</h3><p>יש חצר, אבל בקיץ חם בה מדי ובחורף רטוב מדי.</p><ul><li>פרגולה גבוהה שמחושבת לרוח באזור</li><li>מסכי <span class="ltr">ZIP</span> לחורף</li><li>תאורה ומאוורר מתוכננים מראש</li></ul></div>
+      <div class="card persona"><h3>דירה עם מרפסת גבוהה</h3><p>רוח כל השנה, גשם שנכנס, וסוכך שלא מחזיק.</p><ul><li>מסכים נעולים במסילה</li><li>פתרון להפסקת חשמל</li><li>מפרט וצבע לוועד הבית</li></ul></div>
+      <div class="card persona"><h3>יש פרגולה, אבל</h3><p>העץ נרקב, הסנטף מרעיש, או שאי אפשר לשבת בה בחורף.</p><ul><li>פירוק והחלפה לאלומיניום</li><li>גג שקט יותר</li><li>סגירה או שדרוג לרפפות</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="alt">
+  <div class="wrap">
+    <div class="label">איך זה עובד</div>
+    <h2>תמונה, מדידה, התקנה.</h2>
+    <div class="steps">
+      <div class="step"><em>קודם</em><h3>תשלחו תמונה</h3><p>בוואטסאפ או בטופס, עם מידות בערך. חוזרים עם טווח מחיר תוך <span class="ph">[__]</span> שעות בימי עבודה.</p></div>
+      <div class="step"><em>אחר כך</em><h3>מדידה והצעה כתובה</h3><p>מודדים אצלכם. ההצעה כוללת מפרט, אחריות לכל רכיב ותאריכים. המהנדס והדיווח לוועדה בפנים.</p></div>
+      <div class="step"><em>בסוף</em><h3>התקנה ושירות</h3><p>מתקינים בתאריך שנקבע ומשאירים נקי. אחרי זה יש לכם מספר ישיר לשירות.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about">
+    <div class="photo" id="ownerPhoto">כאן תבוא תמונה אמיתית של שלומי או של הצוות בעבודה</div>
+    <div>
+      <div class="label">מי אנחנו</div>
+      <h2>שלומי רביבו. מהצפון, לצפון.</h2>
+      <p><span class="ph">[פסקה 1: מאיפה שלומי, ממתי בתחום.]</span></p>
+      <p><span class="ph">[פסקה 2: באילו אזורים עובדים, איזה סוג נכסים.]</span></p>
+      <p><span class="ph">[פסקה 3: משהו אחד שחשוב לו בעבודה, במילים שלו.]</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="label">שאלות</div>
+    <h2>מה שואלים אותנו לפני שסוגרים.</h2>
+    <div style="margin-top:1.6rem">
+      <details><summary>כמה זה עולה?</summary><p>תלוי בשטח, בגובה, בגג ובמנוע. כדי שיהיה לכם סדר גודל, אלה טווחי השוק הפומביים: פרגולת אלומיניום קבועה בערך 700 עד 1,300 ₪ למ"ר לפני מע"מ, פרגולה חשמלית ברפפות 1,400 עד 1,900 ₪ למ"ר, ומסך <span class="ltr">ZIP</span> חשמלי 1,000 עד 1,500 ₪ למ"ר (מחירוני מידרג). אצלנו: <span class="ph">[טווח המחיר של העסק]</span>. תשלחו תמונה ומידות, ונחזיר טווח מדויק.</p></details>
+      <details><summary>צריך היתר בנייה לפרגולה?</summary><p>מצללה שעומדת בתנאי התקנות (בלי קירות, חומר קל, לפחות 40% מרווחים בגג, עד 50 מ"ר או רבע מהשטח הפנוי) פטורה מהיתר. חייבים אישור מהנדס ודיווח לוועדה המקומית תוך 45 יום. את שניהם אנחנו עושים. כל מקרה נבדק מול הוועדה של היישוב.</p></details>
+      <details><summary>אני בבית משותף. צריך הסכמה של השכנים?</summary><p>על גג משותף או בחזית הבניין, לרוב כן. הפטור מהיתר לא מבטל את הצורך בהסכמה. נעזור לכם עם מפרט וצבע שאפשר להציג לוועד.</p></details>
+      <details><summary>מסך <span class="ltr">ZIP</span> יחזיק ברוח?</summary><p>המסך נעול במסילות הצד, אז הוא לא מתנפנף כמו סוכך רגיל. כמה רוח הוא מחזיק תלוי בדגם ובגודל: <span class="ph">[דירוג הרוח של היצרן]</span>. במקום חשוף מאוד, כמו קומה גבוהה או הגולן, נמליץ על מידות וחיישן רוח בהתאם.</p></details>
+      <details><summary>מה קורה בהפסקת חשמל, ובשבת?</summary><p>יש מנגנון להפעלה ידנית למקרה של הפסקת חשמל, ואפשרות להפעלה ידנית למי ששומר שבת. <span class="ph">[לאשר אילו פתרונות מציעים]</span></p></details>
+      <details><summary>ואם משהו מתקלקל אחרי ההתקנה?</summary><p>מתקשרים אלינו ישירות. אחריות על המנוע <span class="ph">[__]</span> שנים, ושירות תוך <span class="ph">[__]</span> ימי עבודה. אנחנו מתקנים גם פרגולות חשמליות ומסכים שהתקינו אחרים.</p></details>
+      <details><summary>כמה זמן מההזמנה עד ההתקנה?</summary><p>מדידה תוך <span class="ph">[__]</span> ימים, ייצור <span class="ph">[__]</span> שבועות, והתקנה של יום או יומיים ברוב העבודות. לסגירת חורף כדאי להזמין כבר בסתיו. התאריך כתוב בהצעה.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap formwrap">
+    <div>
+      <div class="label">תיאום מדידה</div>
+      <h2>תספרו לנו מה יש לכם.</h2>
+      <p class="lede">הכי מהיר: תמונה של המקום בוואטסאפ, עם מידות בערך. נחזור עם טווח מחיר ונתאם מדידה.</p>
+      <div class="ways" id="ways"></div>
+      <p class="reply">חוזרים תוך <span class="ph">[__]</span> שעות בימי עבודה. עונה שלומי, לא מוקד.</p>
+    </div>
+    <form id="leadForm" novalidate>
+      <div class="field"><label for="f-name">שם</label><input type="text" id="f-name" name="name" autocomplete="name"><div class="err">חסר שם</div></div>
+      <div class="field"><label for="f-phone">טלפון</label><input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" style="text-align:right"><div class="err">חסר מספר טלפון</div></div>
+      <div class="field"><label for="f-city">יישוב</label><input type="text" id="f-city" name="city"><div class="err">חסר יישוב</div></div>
+      <div class="field"><label for="f-product">מה מעניין אתכם?</label>
+        <select id="f-product" name="product">
+          <option value="">לבחור</option>
+          <option>פרגולת אלומיניום גבוהה</option>
+          <option>פרגולה חשמלית (רפפות)</option>
+          <option>מסכי ZIP</option>
+          <option>שילוב / עוד לא יודעים</option>
+          <option>תיקון או החלפה של פרגולה קיימת</option>
+        </select><div class="err">צריך לבחור</div></div>
+      <button class="btn btn-primary" type="submit" style="width:100%">תשלחו, נחזור עם טווח מחיר</button>
+      <p class="consent">הפרטים משמשים רק כדי לחזור אליכם על הפנייה. <a href="privacy.html">מדיניות פרטיות</a></p>
+      <div class="ok" id="okMsg">קיבלנו. נחזור אליכם בהקדם.</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <div><b style="color:#fff">שלומי רביבו</b> · פרגולות, פרגולות חשמליות ומסכי <span class="ltr">ZIP</span> · הצפון</div>
+    <div id="footContact"></div>
+    <div><a href="privacy.html">מדיניות פרטיות</a></div>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="btn btn-primary" href="#contact">לתיאום מדידה</a></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true"><button aria-label="סגירה" id="lbClose">×</button><img alt="" id="lbImg"></div>
+
+<script>
+(function(){
+  var M = window.SITE_MEDIA || {}, C = window.SITE_CONFIG || {};
+  var WA = C.whatsapp ? 'https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent('שלום שלומי, אני מעוניין/ת בהצעה. מצרף/ת תמונה של המקום:') : '';
+  if (C.businessName) document.querySelectorAll('.logo-name').forEach(function(e){e.textContent=C.businessName;});
+  if (WA) document.querySelectorAll('.js-wa').forEach(function(a){a.href=WA;a.target='_blank';a.rel='noopener';});
+  var hdr=document.querySelector('header');
+  addEventListener('scroll',function(){hdr.classList.toggle('scrolled',scrollY>8);},{passive:true});
+  try{var q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){if(q.get(k))sessionStorage.setItem(k,q.get(k));});}catch(e){}
+
+  // opening: the ZIP screen rolls up with the scroll
+  (function(){
+    var sec=document.getElementById('intro'); if(!sec) return;
+    var view=document.getElementById('introView'), scr=document.getElementById('zipScreen'), bar=scr.querySelector('.screen-bar'), prog=document.getElementById('introProg');
+    var txts=[].slice.call(sec.querySelectorAll('.intro-txt>div'));
+    view.style.backgroundImage='url("'+(M.introView||'media/hero-view.jpg')+'")';
+    function render(p){
+      var up=Math.min(1,Math.max(0,(p-0.08)/0.8));
+      var e=up<.5?2*up*up:1-Math.pow(-2*up+2,2)/2;
+      scr.style.transform='scaleY('+(1-e).toFixed(4)+')';
+      bar.style.transform='scaleY('+(1/Math.max(1-e,0.02)).toFixed(3)+')';
+      view.style.transform='scale('+(1.14-0.14*p).toFixed(4)+')';
+      prog.style.width=(p*100).toFixed(1)+'%';
+      var idx=0; txts.forEach(function(t,i){ if(p>=parseFloat(t.dataset.at)) idx=i; });
+      txts.forEach(function(t,i){ t.classList.toggle('on', i===idx); });
+    }
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){ sec.classList.add('static'); render(1); return; }
+    var target=0, cur=0, barH=hdr.offsetHeight;
+    function measure(){ var r=sec.getBoundingClientRect(), max=sec.offsetHeight-(innerHeight-barH); target=Math.min(1,Math.max(0,-r.top/max)); }
+    addEventListener('scroll',measure,{passive:true}); addEventListener('resize',function(){barH=hdr.offsetHeight;measure();});
+    measure(); cur=target; render(cur);
+    (function loop(){ cur+=(target-cur)*0.15; if(Math.abs(target-cur)<0.0005) cur=target; render(cur); requestAnimationFrame(loop); })();
+  })();
+
+  // hero video (optional)
+  if (M.heroVideo && M.heroVideo.src){
+    var w=document.getElementById('heroVideoWrap'); w.hidden=false; w.style.marginTop='3rem';
+    var v=document.createElement('video'); v.muted=true; v.loop=true; v.playsInline=true; v.autoplay=true; v.preload='auto';
+    v.setAttribute('muted',''); v.setAttribute('playsinline',''); v.src=M.heroVideo.src; if(M.heroVideo.poster)v.poster=M.heroVideo.poster;
+    w.appendChild(v);
+    new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?v.play().catch(function(){}):v.pause();});}).observe(v);
+  }
+  // videos
+  var vids=document.getElementById('vids');
+  (M.videos||[]).forEach(function(x){var f=document.createElement('figure');f.innerHTML='<video controls preload="metadata" playsinline></video><figcaption></figcaption>';f.querySelector('video').src=x.src+'#t=0.1';f.querySelector('figcaption').textContent=x.caption||'';vids.appendChild(f);});
+  if(!vids.children.length)vids.remove();
+  // gallery
+  var gal=document.getElementById('gal'), lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg');
+  (M.gallery||[]).forEach(function(x){var f=document.createElement('figure');var i=document.createElement('img');i.src=x.src;i.alt=x.caption||'פרויקט';i.loading='lazy';if(x.w){i.width=x.w;i.height=x.h;}i.onclick=function(){lbImg.src=x.src;lbImg.alt=i.alt;lb.classList.add('open');};f.appendChild(i);if(x.ai){var bd=document.createElement('span');bd.className='ai-badge';bd.textContent='הדמיה';f.appendChild(bd);}var c=document.createElement('figcaption');c.textContent=(x.ai?'הדמיה · ':'')+(x.caption||'');f.appendChild(c);gal.appendChild(f);});
+  if((M.gallery||[]).some(function(x){return x.ai;})){document.getElementById('worksLead').textContent='אלה הדמיות של סוגי הפרויקטים שאנחנו עושים. תמונות מעבודות אמיתיות שלנו עולות בקרוב.';}
+  if(!gal.children.length)gal.remove();
+  if(!document.getElementById('vids')&&!document.getElementById('gal'))document.getElementById('works').hidden=true;
+  function closeLb(){lb.classList.remove('open');}
+  document.getElementById('lbClose').onclick=closeLb; lb.onclick=function(e){if(e.target===lb)closeLb();}; addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+  // before / after
+  var bl=document.getElementById('baList');
+  (M.beforeAfter||[]).forEach(function(x){var f=document.createElement('figure');f.innerHTML='<div class="ba"><img loading="lazy" alt="לפני"><img class="after" loading="lazy" alt="אחרי"><span class="lbl l">לפני</span><span class="lbl r">אחרי</span><input type="range" min="0" max="100" value="50" aria-label="השוואה לפני ואחרי"></div><figcaption></figcaption>';var im=f.querySelectorAll('img');im[0].src=x.before;im[1].src=x.after;f.querySelector('figcaption').textContent=x.caption||'';var r=f.querySelector('input'),a=im[1];r.oninput=function(){a.style.clipPath='inset(0 0 0 '+r.value+'%)';};bl.appendChild(f);});
+  if(!bl.children.length)document.getElementById('ba').hidden=true;
+  if(M.ownerPhoto){document.getElementById('ownerPhoto').innerHTML='<img alt="שלומי רביבו" loading="lazy">';document.querySelector('#ownerPhoto img').src=M.ownerPhoto;}
+  // contact ways
+  var ways=document.getElementById('ways'), fc=document.getElementById('footContact'), st=document.getElementById('sticky');
+  function way(href,label,val){var a=document.createElement('a');a.className='way';a.href=href;if(/^http/.test(href)){a.target='_blank';a.rel='noopener';}a.innerHTML='<b></b><span class="ltr"></span>';a.querySelector('b').textContent=label;a.querySelector('span').textContent=val;ways.appendChild(a);}
+  if(WA){way(WA,'וואטסאפ, עם תמונה','לפתוח');var s=document.createElement('a');s.className='btn btn-ghost';s.href=WA;s.target='_blank';s.rel='noopener';s.textContent='וואטסאפ';st.appendChild(s);}
+  if(C.phone){way('tel:'+C.phone.replace(/[^0-9+]/g,''),'טלפון',C.phone);}
+  if(C.instagram){way(C.instagram,'אינסטגרם','לפתוח');}
+  var parts=[];if(C.phone)parts.push(C.phone);if(C.email)parts.push(C.email);fc.textContent=parts.join(' · ');
+  // form
+  var form=document.getElementById('leadForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true, d={};
+    [['f-name',function(v){return v.trim().length>1;}],['f-phone',function(v){return v.replace(/\D/g,'').length>=9;}],['f-city',function(v){return v.trim().length>1;}],['f-product',function(v){return !!v;}]].forEach(function(p){
+      var el=document.getElementById(p[0]), good=p[1](el.value); el.parentNode.classList.toggle('bad',!good); if(!good)ok=false; d[el.name]=el.value.trim();
+    });
+    if(!ok){var b=form.querySelector('.bad input,.bad select'); if(b)b.focus(); return;}
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){try{var v=sessionStorage.getItem(k);if(v)d[k]=v;}catch(e){}});
+    d.page=location.href; d.ts=new Date().toISOString();
+    function done(){form.querySelector('button').disabled=true;document.getElementById('okMsg').style.display='block';if(window.trackLead)trackLead(d);}
+    if(C.formEndpoint){
+      fetch(C.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)}).then(done).catch(function(){alert('משהו השתבש בשליחה. אפשר לנסות שוב או לכתוב בוואטסאפ.');});
+    } else if(C.whatsapp){
+      done(); location.href='https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent('שלום שלומי, אני '+d.name+' מ'+d.city+'. מתעניין/ת ב: '+d.product+'. טלפון: '+d.phone);
+    } else { done(); console.warn('לא הוגדר formEndpoint או whatsapp ב-tracking.js', d); }
+  });
+})();
+</script>
+</body>
+</html>
